@@ -26,6 +26,50 @@ your progress across sessions using a set of workspace files:
 
 See [`SKILL.md`](./SKILL.md) for the full teaching philosophy and behavior.
 
+## Install
+
+This repository **is** the skill — `SKILL.md` lives at the root — so installing
+is just cloning it into a skills directory. Install once at **user scope** and
+it's available in every project:
+
+```sh
+git clone https://github.com/klittle32/teach.git ~/.claude/skills/teach
+```
+
+Update later with:
+
+```sh
+git -C ~/.claude/skills/teach pull
+```
+
+If you'd rather keep the clone in your own dev folder, clone anywhere and
+symlink it in instead — a symlink means `git pull` in the clone updates the
+installed skill automatically:
+
+```sh
+git clone https://github.com/klittle32/teach.git ~/code/teach
+ln -s ~/code/teach ~/.claude/skills/teach
+```
+
+Telling an agent *"go grab my teach skill from klittle32/teach and give it to
+yourself"* resolves to the clone command above.
+
+## Usage
+
+The skill logic is stable across topics; only the workspace data (`MISSION.md`,
+`lessons/`, learning records, …) is per-topic. So install once, then **one
+directory per topic** you want to learn:
+
+```sh
+mkdir ~/learning/rust && cd ~/learning/rust
+# then, in your agent:
+/teach Rust for shipping a CLI to my team
+```
+
+The skill treats the current directory as the teaching workspace and writes all
+state there. You don't need a fresh install — or a separate project-scope
+copy — per topic.
+
 ## Attribution
 
 This is a **fork** of Matt Pocock's original `teach` skill. See [`LICENSE`](./LICENSE)

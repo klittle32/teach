@@ -1,7 +1,3 @@
-# Per-learner workspace state (generated when using the skill)
-lessons/
-learning-records/
-MISSION.md
-GLOSSARY.md
-RESOURCES.md
-NOTES.md
+# OS / editor cruft
+.DS_Store
+*.swp
